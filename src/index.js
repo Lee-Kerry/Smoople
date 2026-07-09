@@ -191,6 +191,21 @@ function checkOneOff(guess, prev) {
 }
 
 function clipboard() {
-    var copyText = "I LOVE LEE KERRY";
+    var purple = String.fromCodePoint(0x1F7EA);
+    var white = String.fromCodePoint(0x2B1C);
+    var copyText = `Smoople: ${start} -> SMOOP\n`;
+    for (let r = 0; r < height; r++) {
+        for (let c = 0; c < width; c++) {
+            let currTile = document.getElementById(r.toString() + "-" + c.toString());
+            if (currTile.classList.contains("correct")) {
+                copyText += purple;
+            }
+            else {
+                copyText += white;
+            }
+        }
+        copyText += "\n";
+    }
+    copyText += "https://lee-kerry.github.io/Smoople/"
     navigator.clipboard.writeText(copyText);
 }
